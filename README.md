@@ -37,16 +37,16 @@ npm install
 
 * Step 3: Add `jsenv` to your PATH
 
-For the time being you'll need to this manually.
-
-On linux and mac: modify the `jsenv` file to use the correct path to this repository, make executable and the copy it to your PATH.
+```sh
+npm link
+```
 
 ## Usage
 
-After installation you can use it in the same way you use `node` in the command line.
+After installation you can use it to run scripts.
 
 ```sh
-jsenv /path/to/script.js
+jsenv /path/to/script.js --one arg --flag
 ```
 
 ## Support
