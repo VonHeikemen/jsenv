@@ -1,5 +1,6 @@
 const execa = require('execa');
 const cli = require('arg');
+const sh = require('@util/sh.js');
 
 function stdout(str) {
   process.stdout.write(str);
@@ -15,20 +16,6 @@ async function stdin() {
 
   return input;
 }
-
-const shell = (options) => (cmd) => execa.commandSync(cmd, options);
-const sh = shell({ stdio: 'inherit' });
-sh.str = str => str.replace(/ /g, '\\ ');
-sh.quiet = shell();
-sh.run = (cmd) => sh.quiet(cmd).stdout;
-sh.build = shell;
-sh.safe = (cmd) => {
-  try {
-    return sh(cmd);
-  } catch (e) {
-    return e
-  }
-};
 
 Object.assign(global, {
   sh,
