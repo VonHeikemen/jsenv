@@ -5,7 +5,7 @@ This tool is meant to "create a productive environment" for your nodejs scripts.
 The idea is to enable you to write code like the one below without worrying about `npm install` or package.json files. You can find out more details about why and how [here](https://dev.to/vonheikemen/create-a-productive-environment-for-your-personal-nodejs-scripts-1o2p).
 
 ```js
-#! /usr/bin/env jsenv
+#! /usr/bin/env jse
 
 import fetch from 'node-fetch';
 import html from 'cheerio';
@@ -43,10 +43,16 @@ npm link
 
 ## Usage
 
-After installation you can use it to run scripts.
+After installation you'll have three different commands to run scripts.
+
+* `jsc`: Only supports common-js modules. Doesn't have support for top-level await. You can `require` "global" modules.
+
+* `jsm`: Only supports native es modules. Has top-level await. But you can't get "global" modules using `import` or `require`, instead you'll need to use the global function called `use`.
+
+* `jse`: Supports es module syntax through a third party module loader ([esm](https://www.npmjs.com/package/esm)). Can also use `require` if you want to. Has top-level await support. Can use "global" modules with `import` or `require`. What's the catch? Startup times will be slightly slower than the others.
 
 ```sh
-jsenv /path/to/script.js --one arg --flag
+jse /path/to/script.js --one arg --flag
 ```
 
 ## Support
