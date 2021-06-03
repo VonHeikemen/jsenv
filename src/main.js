@@ -1,3 +1,4 @@
+const { createInterface } = require('readline');
 const execa = require('execa');
 const cli = require('arg');
 
@@ -18,6 +19,21 @@ async function stdin() {
   }
 
   return input;
+}
+
+async function prompt(message) {
+  const readline = createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+
+  const user_input = await new Promise((resolve) => {
+    readline.question(message, resolve);
+  });
+
+  readline.close();
+
+  return user_input;
 }
 
 function format_number(number) {
@@ -42,6 +58,7 @@ Object.assign(global, {
   sh,
   cli,
   color,
+  prompt,
   stdin,
   stdout,
   format_number
