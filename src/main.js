@@ -1,4 +1,3 @@
-const execa = require('execa');
 const cli = require('arg');
 const sh = require('@util/sh.js');
 
