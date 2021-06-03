@@ -51,9 +51,13 @@ After installation you'll have three different commands to run scripts.
 
 * `jse`: Supports es module syntax through a third party module loader ([esm](https://www.npmjs.com/package/esm)). Can also use `require` if you want to. Has top-level await support. Can use "global" modules with `import` or `require`. What's the catch? Startup times will be slightly slower than the others.
 
+Usage in the command line (with `jse`).
+
 ```sh
 jse /path/to/script.js --one arg --flag
 ```
+
+> Note: if you don't want all those executables in your `PATH`, change the `bin` property in `package.json` before using `npm link` command.
 
 ## Support
 
