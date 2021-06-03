@@ -1,5 +1,7 @@
 #! /usr/bin/env node
 
+const path = require('path');
+
 // Setup "global" packages
 process.env.NODE_PATH = module.paths[1];
 require('module')._initPaths();
@@ -11,7 +13,7 @@ require('module')._initPaths();
 require('./main.js');
 
 // Run the script
-const script = process.argv[2];
+const script = path.resolve(process.argv[2]);
 
 if(script) {
   require(script);

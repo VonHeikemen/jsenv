@@ -1,5 +1,6 @@
 #! /usr/bin/env node
 
+import { resolve } from 'path';
 import { createRequire } from 'module';
 
 // Setup function to require "global" modules
@@ -9,7 +10,7 @@ global['use'] = createRequire(import.meta.url);
 use('./main.js');
 
 // Run the script
-const script = process.argv[2];
+const script = resolve(process.argv[2]);
 
 if(script) {
   await import(script);
