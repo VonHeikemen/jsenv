@@ -3,7 +3,8 @@
 const path = require('path');
 
 // Setup "global" packages
-process.env.NODE_PATH = module.paths[1];
+const separator = process.platform === 'win32' ? ';' : ':';
+process.env.NODE_PATH = module.paths.slice(0, 2).join(separator);
 require('module')._initPaths();
 
 // Setup es modules

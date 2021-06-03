@@ -1,10 +1,5 @@
-const { createInterface } = require('readline');
 const execa = require('execa');
 const cli = require('arg');
-
-const color_support = require('color-support').hasBasic;
-const color = require('ansi-colors');
-color.enabled = color_support;
 
 function stdout(str) {
   process.stdout.write(str);
@@ -19,25 +14,6 @@ async function stdin() {
   }
 
   return input;
-}
-
-async function prompt(message) {
-  const readline = createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
-
-  const user_input = await new Promise((resolve) => {
-    readline.question(message, resolve);
-  });
-
-  readline.close();
-
-  return user_input;
-}
-
-function format_number(number) {
-  return new Intl.NumberFormat('de-DE').format(number);
 }
 
 const shell = (options) => (cmd) => execa.commandSync(cmd, options);
@@ -57,10 +33,7 @@ sh.safe = (cmd) => {
 Object.assign(global, {
   sh,
   cli,
-  color,
-  prompt,
   stdin,
   stdout,
-  format_number
 });
 
