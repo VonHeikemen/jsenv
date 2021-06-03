@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 
 // Setup "global" packages
-process.env.NODE_PATH = `${module.path}/node_modules`;
+process.env.NODE_PATH = module.paths[1];
 require('module')._initPaths();
 
 // Setup es modules
