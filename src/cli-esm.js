@@ -5,7 +5,7 @@ process.env.NODE_PATH = module.paths[1];
 require('module')._initPaths();
 
 // Setup es modules
-// require = require('esm')(module, { 'await': true, 'cache': false });
+require = require('esm')(module, { 'await': true, 'cache': false });
 
 // Setup global utility functions
 require('./main.js');
