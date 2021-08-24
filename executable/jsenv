@@ -1,7 +1,0 @@
-#! /usr/bin/env sh
-
-export ESM_OPTIONS=/path/to/jsenv/esm.json
-
-NODE_PATH=/path/to/jsenv/node_modules/ \
-node -r esm -r /path/to/jsenv/main.js "$@"
-
